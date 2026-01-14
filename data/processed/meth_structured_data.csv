@@ -1,36 +1,36 @@
-pmid,meth_level,trigger,trigger_route,treatment,mb_dose,symptoms,age,gender,g6pd_status,time_to_improvement,outcome,data_quality_score,source_file,source_type
-10616167,,Benzocaine,Topical,Methylene Blue,,Cyanosis,,,Not mentioned,,Unknown,42,abstract_10616167.txt,abstract
-15106687,,Sulfonamides,Oral,Supportive,,Cyanosis,24,Female,Not mentioned,,Unknown,71,abstract_15106687.txt,abstract
-16640711,,Benzocaine,Topical,Methylene Blue,,None specified,,,Not mentioned,,Fatal,42,abstract_16640711.txt,abstract
-18853835,,Unknown,Oral,Methylene Blue,,Cyanosis,55,,Not mentioned,,Unknown,42,abstract_18853835.txt,abstract
-19263080,,Unknown,Oral,Methylene Blue,,Cyanosis,,,Deficient,,Unknown,28,abstract_19263080.txt,abstract
-20306428,16,Unknown,Oral,Unknown,,"Cyanosis, Dyspnea",49,,Not mentioned,,Recovered,57,abstract_20306428.txt,abstract
-20637402,10.8,Benzocaine,Topical,Methylene Blue,,None specified,,,Not mentioned,,Fatal,57,abstract_20637402.txt,abstract
-28803519,32.4,Benzocaine,Topical,Methylene Blue,,Cyanosis,51,,Not mentioned,,Fatal,85,abstract_28803519.txt,abstract
-32909713,,Unknown,Oral,Methylene Blue,,Cyanosis,,,Not mentioned,,Unknown,28,abstract_32909713.txt,abstract
-33122582,,Rasburicase,Oral,Methylene Blue,,None specified,14,,Deficient,,Recovered,57,abstract_33122582.txt,abstract
-33449539,,Genetic,Oral,Unknown,,Cyanosis,,,Not mentioned,,Unknown,28,abstract_33449539.txt,abstract
-33847673,,Nitrates,Oral,"Methylene Blue, Vitamin C, Exchange Transfusion",,Cyanosis,,,Not mentioned,,Recovered,57,abstract_33847673.txt,abstract
-35725643,,Unknown,Oral,"Methylene Blue, Oxygen",,"Cyanosis, Dyspnea",38,,Not mentioned,,Admitted,57,abstract_35725643.txt,abstract
-35875039,,Unknown,Oral,Unknown,,"Cyanosis, Altered Mental Status, Dizziness, Nausea",40,,Not mentioned,,Recovered,42,abstract_35875039.txt,abstract
-36304805,,Genetic,Oral,"Methylene Blue, Vitamin C, Oxygen",,Cyanosis,55,Male,Not mentioned,,Fatal,85,abstract_36304805.txt,abstract
-36451721,,Dapsone,Oral,"Methylene Blue, Vitamin C",,Cyanosis,16,,Not mentioned,,Unknown,57,abstract_36451721.txt,abstract
-36599025,,Nitrates,Oral,Methylene Blue,,Cyanosis,,,Not mentioned,,Unknown,42,abstract_36599025.txt,abstract
-36984616,36.9,Genetic,Oral,Unknown,,"Cyanosis, Dyspnea",79,,Not mentioned,,Unknown,57,abstract_36984616.txt,abstract
-37296483,23.1,Nitrates,Oral,Methylene Blue,,"Cyanosis, Dyspnea",31,,Not mentioned,,Recovered,85,abstract_37296483.txt,abstract
-37421600,30,Benzocaine,Topical,"Methylene Blue, Vitamin C",,"Cyanosis, Dizziness",66,,Deficient,,Unknown,71,abstract_37421600.txt,abstract
-38110882,,Unknown,Oral,Methylene Blue,,Cyanosis,,,Not mentioned,,Unknown,28,abstract_38110882.txt,abstract
-38493134,12,Unknown,Topical,"Methylene Blue, Vitamin C",,Cyanosis,28,,Not mentioned,,Recovered,71,abstract_38493134.txt,abstract
-38799189,,Unknown,Oral,Methylene Blue,,"Cyanosis, Altered Mental Status",18,,Not mentioned,,Unknown,42,abstract_38799189.txt,abstract
-39256769,,Nitrates,Oral,Methylene Blue,,"Cyanosis, Headache",14,,Not mentioned,,Unknown,57,abstract_39256769.txt,abstract
-39711837,,Genetic,Oral,Methylene Blue,,Cyanosis,,,Not mentioned,,Fatal,57,abstract_39711837.txt,abstract
-39984978,72.7,Unknown,Oral,"Methylene Blue, Vitamin C, Oxygen",,Cyanosis,1,,Not mentioned,,Unknown,57,abstract_39984978.txt,abstract
-41320991,,Unknown,Oral,"Methylene Blue, Vitamin C",,"Cyanosis, Dyspnea",,,Not mentioned,,Unknown,28,abstract_41320991.txt,abstract
+pmid,methb_level,trigger,trigger_route,treatment,,symptoms,age,gender,g6pd_status,time_to_improvement,outcome,data_quality_score,source_file,source_type
+10616167,Unknown,Benzocaine,Topical,Methylene Blue,,Cyanosis,Unknown,Unknown,Not mentioned,,Unknown,42,abstract_10616167.txt,abstract
+15106687,Unknown,Sulfonamides,Oral,Supportive,,Cyanosis,24,Female,Not mentioned,,Unknown,71,abstract_15106687.txt,abstract
+16640711,Unknown,Benzocaine,Topical,Methylene Blue,,None specified,,Unknown,Not mentioned,,Fatal,42,abstract_16640711.txt,abstract
+18853835,Unknown,Unknown,Oral,Methylene Blue,,Cyanosis,55,Unknown,Not mentioned,,Unknown,42,abstract_18853835.txt,abstract
+19263080,Unknown,Unknown,Oral,Methylene Blue,,Cyanosis,Unknown,Unknown,Deficient,,Unknown,28,abstract_19263080.txt,abstract
+20306428,16,Unknown,Oral,Unknown,,"Cyanosis, Dyspnea",49,Unknown,Not mentioned,,Recovered,57,abstract_20306428.txt,abstract
+20637402,10.8,Benzocaine,Topical,Methylene Blue,,None specified,,Unknown,Not mentioned,,Fatal,57,abstract_20637402.txt,abstract
+28803519,32.4,Benzocaine,Topical,Methylene Blue,,Cyanosis,51,Unknown,Not mentioned,,Fatal,85,abstract_28803519.txt,abstract
+32909713,Unknown,Unknown,Oral,Methylene Blue,,Cyanosis,Unknown,Unknown,Not mentioned,,Unknown,28,abstract_32909713.txt,abstract
+33122582,Unknown,Rasburicase,Oral,Methylene Blue,,None specified,14,Unknown,Deficient,,Recovered,57,abstract_33122582.txt,abstract
+33449539,Unknown,Genetic,Oral,Unknown,,Cyanosis,Unknown,Unknown,Not mentioned,,Unknown,28,abstract_33449539.txt,abstract
+33847673,Unknown,Nitrates,Oral,"Methylene Blue, Vitamin C, Exchange Transfusion",,Cyanosis,Unknown,Unknown,Not mentioned,,Recovered,57,abstract_33847673.txt,abstract
+35725643,Unknown,Unknown,Oral,"Methylene Blue, Oxygen",,"Cyanosis, Dyspnea",38,Unknown,Not mentioned,,Admitted,57,abstract_35725643.txt,abstract
+35875039,Unknown,Unknown,Oral,Unknown,,"Cyanosis, Altered Mental Status, Dizziness, Nausea",40,Unknown,Not mentioned,,Recovered,42,abstract_35875039.txt,abstract
+36304805,Unknown,Genetic,Oral,"Methylene Blue, Vitamin C, Oxygen",,Cyanosis,55,Male,Not mentioned,,Fatal,85,abstract_36304805.txt,abstract
+36451721,Unknown,Dapsone,Oral,"Methylene Blue, Vitamin C",,Cyanosis,16,Unknown,Not mentioned,,Unknown,57,abstract_36451721.txt,abstract
+36599025,Unknown,Nitrates,Oral,Methylene Blue,,Cyanosis,Unknown,Unknown,Not mentioned,,Unknown,42,abstract_36599025.txt,abstract
+36984616,36.9,Genetic,Oral,Unknown,,"Cyanosis, Dyspnea",79,Unknown,Not mentioned,,Unknown,57,abstract_36984616.txt,abstract
+37296483,23.1,Nitrates,Oral,Methylene Blue,,"Cyanosis, Dyspnea",31,Unknown,Not mentioned,,Recovered,85,abstract_37296483.txt,abstract
+37421600,30,Benzocaine,Topical,"Methylene Blue, Vitamin C",,"Cyanosis, Dizziness",66,Unknown,Deficient,,Unknown,71,abstract_37421600.txt,abstract
+38110882,Unknown,Unknown,Oral,Methylene Blue,,Cyanosis,Unknown,Unknown,Not mentioned,,Unknown,28,abstract_38110882.txt,abstract
+38493134,12,Unknown,Topical,"Methylene Blue, Vitamin C",,Cyanosis,28,Unknown,Not mentioned,,Recovered,71,abstract_38493134.txt,abstract
+38799189,Unknown,Unknown,Oral,Methylene Blue,,"Cyanosis, Altered Mental Status",18,Unknown,Not mentioned,,Unknown,42,abstract_38799189.txt,abstract
+39256769,Unknown,Nitrates,Oral,Methylene Blue,,"Cyanosis, Headache",14,Unknown,Not mentioned,,Unknown,57,abstract_39256769.txt,abstract
+39711837,Unknown,Genetic,Oral,Methylene Blue,,Cyanosis,Unknown,Unknown,Not mentioned,,Fatal,57,abstract_39711837.txt,abstract
+39984978,72.7,Unknown,Oral,"Methylene Blue, Vitamin C, Oxygen",,Cyanosis,1,Unknown,Not mentioned,,Unknown,57,abstract_39984978.txt,abstract
+41320991,,Unknown,Oral,"Methylene Blue, Vitamin C",,"Cyanosis, Dyspnea",,Unknown,Not mentioned,,Unknown,28,abstract_41320991.txt,abstract
 PDF_1,13.7,Dapsone,Oral,"Methylene Blue, Vitamin C, Supportive",,"Cyanosis, Dyspnea, Altered Mental Status, Headache, Dizziness, Seizure, Chest Pain",,,Deficient,,Fatal,71,ajol-file-journals_414_articles_246115_submission_proof_246115-4933-590235-1-10-20230419.pdf,pdf
-PDF_2,28,Dapsone,Oral,Methylene Blue,,Cyanosis,36,,Not mentioned,,Recovered,85,American J Hematol - 2017 - Morris - A puzzling case of methemoglobinemia.pdf,pdf
-PDF_3,20,Acetaminophen,Oral,"Methylene Blue, Supportive",,"Cyanosis, Dyspnea, Altered Mental Status, Headache, Dizziness",78,,Deficient,,Recovered,85,"amp,+753-756.pdf",pdf
-PDF_4,32,Acetaminophen,Oral,Methylene Blue,2,"Cyanosis, Altered Mental Status",54,,Deficient,,Recovered,85,Methemoglobinemiaassociatedwithmassiveacetaminopheningestionacaseseries1.pdf,pdf
-PDF_5,,Benzocaine,Topical,"Methylene Blue, Oxygen",,"Cyanosis, Dyspnea",25,Female,Not mentioned,,Unknown,71,NEJMicm1816026.pdf,pdf
-PDF_6,89,Nitrates,Topical,"Methylene Blue, Vitamin C, Exchange Transfusion, Oxygen, Supportive",2,"Cyanosis, Dyspnea, Altered Mental Status, Headache, Seizure",1,,Deficient,,Fatal,85,s13052-025-01886-z.pdf,pdf
-PDF_7,86,Unknown,Oral,"Methylene Blue, Vitamin C, Oxygen, Supportive",,"Cyanosis, Dyspnea, Altered Mental Status, Dizziness, Nausea, Seizure",55,,Deficient,,Recovered,71,University Hospital Centre Croatia.pdf,pdf
-PDF_8,55,Dapsone,Topical,"Methylene Blue, Vitamin C, Exchange Transfusion, Oxygen",,"Cyanosis, Dyspnea, Altered Mental Status, Nausea",16,,Deficient,,Fatal,85,wjm17500193.pdf,pdf
+PDF_2,28,Dapsone,Oral,Methylene Blue,,Cyanosis,36,Unknown,Not mentioned,,Recovered,85,American J Hematol - 2017 - Morris - A puzzling case of methemoglobinemia.pdf,pdf
+PDF_3,20,Acetaminophen,Oral,"Methylene Blue, Supportive",,"Cyanosis, Dyspnea, Altered Mental Status, Headache, Dizziness",78,Unknown,Deficient,,Recovered,85,"amp,+753-756.pdf",pdf
+PDF_4,32,Acetaminophen,Oral,Methylene Blue,,"Cyanosis, Altered Mental Status",54,Unknown,Deficient,,Recovered,85,Methemoglobinemiaassociatedwithmassiveacetaminopheningestionacaseseries1.pdf,pdf
+PDF_5,Unknown,Benzocaine,Topical,"Methylene Blue, Oxygen",,"Cyanosis, Dyspnea",25,Female,Not mentioned,,Unknown,71,NEJMicm1816026.pdf,pdf
+PDF_6,89,Nitrates,Topical,"Methylene Blue, Vitamin C, Exchange Transfusion, Oxygen, Supportive",,"Cyanosis, Dyspnea, Altered Mental Status, Headache, Seizure",1,Unknown,Deficient,,Fatal,85,s13052-025-01886-z.pdf,pdf
+PDF_7,86,Unknown,Oral,"Methylene Blue, Vitamin C, Oxygen, Supportive",,"Cyanosis, Dyspnea, Altered Mental Status, Dizziness, Nausea, Seizure",55,Unknown,Deficient,,Recovered,71,University Hospital Centre Croatia.pdf,pdf
+PDF_8,55,Dapsone,Topical,"Methylene Blue, Vitamin C, Exchange Transfusion, Oxygen",,"Cyanosis, Dyspnea, Altered Mental Status, Nausea",16,Unknown,Deficient,,Fatal,85,wjm17500193.pdf,pdf
