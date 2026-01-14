@@ -1,0 +1,16 @@
+pmid,issue_type,value,message
+39984978,Unusually High MetHb,72.7,MetHb 72.7% is very high (>70% often fatal) - verify this is correct
+PDF_6,Unusually High MetHb,89.0,MetHb 89.0% is very high (>70% often fatal) - verify this is correct
+PDF_7,Unusually High MetHb,86.0,MetHb 86.0% is very high (>70% often fatal) - verify this is correct
+19263080,G6PD + Methylene Blue,"G6PD: Deficient, Treatment: Methylene Blue",G6PD deficient patient given methylene blue (contraindicated!) - verify extraction
+33122582,G6PD + Methylene Blue,"G6PD: Deficient, Treatment: Methylene Blue",G6PD deficient patient given methylene blue (contraindicated!) - verify extraction
+36304805,Genetic + Methylene Blue,"Trigger: Genetic, Treatment: Methylene Blue, Vitamin C, Oxygen",Genetic methemoglobinemia rarely responds to methylene blue - verify this case
+37421600,G6PD + Methylene Blue,"G6PD: Deficient, Treatment: Methylene Blue, Vitamin C",G6PD deficient patient given methylene blue (contraindicated!) - verify extraction
+39711837,Genetic + Methylene Blue,"Trigger: Genetic, Treatment: Methylene Blue",Genetic methemoglobinemia rarely responds to methylene blue - verify this case
+41320991,Genetic + Methylene Blue,"Trigger: Genetic, Treatment: Methylene Blue, Vitamin C",Genetic methemoglobinemia rarely responds to methylene blue - verify this case
+PDF_1,G6PD + Methylene Blue,"G6PD: Deficient, Treatment: Methylene Blue, Vitamin C, Supportive",G6PD deficient patient given methylene blue (contraindicated!) - verify extraction
+PDF_3,G6PD + Methylene Blue,"G6PD: Deficient, Treatment: Methylene Blue, Supportive",G6PD deficient patient given methylene blue (contraindicated!) - verify extraction
+PDF_4,G6PD + Methylene Blue,"G6PD: Deficient, Treatment: Methylene Blue",G6PD deficient patient given methylene blue (contraindicated!) - verify extraction
+PDF_6,G6PD + Methylene Blue,"G6PD: Deficient, Treatment: Methylene Blue, Vitamin C, Exchange Transfusion, Oxygen, Supportive",G6PD deficient patient given methylene blue (contraindicated!) - verify extraction
+PDF_7,G6PD + Methylene Blue,"G6PD: Deficient, Treatment: Methylene Blue, Vitamin C, Oxygen, Supportive",G6PD deficient patient given methylene blue (contraindicated!) - verify extraction
+PDF_8,G6PD + Methylene Blue,"G6PD: Deficient, Treatment: Methylene Blue, Vitamin C, Exchange Transfusion, Oxygen",G6PD deficient patient given methylene blue (contraindicated!) - verify extraction

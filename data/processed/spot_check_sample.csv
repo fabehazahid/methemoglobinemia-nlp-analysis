@@ -1,0 +1,11 @@
+pmid,meth_level,trigger,trigger_route,treatment,mb_dose,symptoms,age,gender,g6pd_status,time_to_improvement,outcome,data_quality_score,source_file,source_type
+41320991,,Genetic,Oral,"Methylene Blue, Vitamin C",,"Cyanosis, Dyspnea",,,Not mentioned,,Unknown,42,abstract_41320991.txt,abstract
+35875039,,Unknown,Oral,Unknown,,"Cyanosis, Altered Mental Status, Dizziness, Nausea",40.0,,Not mentioned,,Recovered,42,abstract_35875039.txt,abstract
+39711837,,Genetic,Oral,Methylene Blue,,Cyanosis,,,Not mentioned,,Fatal,57,abstract_39711837.txt,abstract
+38493134,12.0,Unknown,Topical,"Methylene Blue, Vitamin C",,Cyanosis,28.0,,Not mentioned,,Recovered,71,abstract_38493134.txt,abstract
+36451721,,Dapsone,Oral,"Methylene Blue, Vitamin C",,Cyanosis,16.0,,Not mentioned,,Unknown,57,abstract_36451721.txt,abstract
+PDF_3,20.0,Dapsone,Oral,"Methylene Blue, Supportive",,"Cyanosis, Dyspnea, Altered Mental Status, Headache, Dizziness",78.0,,Deficient,,Recovered,85,"amp,+753-756.pdf",pdf
+37421600,30.0,Benzocaine,Topical,"Methylene Blue, Vitamin C",,"Cyanosis, Dizziness",66.0,,Deficient,,Unknown,71,abstract_37421600.txt,abstract
+35725643,,Unknown,Oral,"Methylene Blue, Oxygen",,"Cyanosis, Dyspnea",38.0,,Not mentioned,,Admitted,57,abstract_35725643.txt,abstract
+32909713,,Unknown,Oral,Methylene Blue,,Cyanosis,,,Not mentioned,,Unknown,28,abstract_32909713.txt,abstract
+36599025,,Nitrates,Oral,Methylene Blue,,Cyanosis,,,Not mentioned,,Unknown,42,abstract_36599025.txt,abstract

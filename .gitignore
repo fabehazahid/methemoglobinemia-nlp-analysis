@@ -1,0 +1,124 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Data files - PDFs are large, don't upload to GitHub
+data/PDFs and abstracts/*.pdf
+data/raw/*
+
+# Keep folder structure but not large files
+!data/PDFs and abstracts/.gitkeep
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Outputs
+outputs/visualizations/*.png
+outputs/analysis_report.txt
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.py[cod]
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+.DS_Store?
+._*
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Data (keep structure, not large files)
+data/PDFs and abstracts/*.pdf
+data/PDFs and abstracts/*.txt
+data/raw/*
+!data/PDFs and abstracts/.gitkeep
+!data/raw/.gitkeep
+
+# Outputs (regeneratable)
+outputs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+.DS_Store?
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data (don't upload large files)
+*.pdf
+*.txt
+!requirements.txt
+!README.md
+```
+
