@@ -38,12 +38,25 @@ st.markdown("""
 
 @st.cache_data
 def load_data():
-    """Load and cache the data"""
     try:
+       
         df = pd.read_csv('data/processed/meth_structured_data.csv')
+        
+        # CLEANING: Force 'age' and 'methb_level' to be numbers
+        # This removes units like 'years' or '%' and turns errors into 'NaN'
+        if 'age' in df.columns:
+            df['age'] = pd.to_numeric(df['age'].astype(str).str.extract('(\d+)', expand=False), errors='coerce')
+        
+        if 'methb_level' in df.columns:
+            df['methb_level'] = pd.to_numeric(df['methb_level'].astype(str).str.replace('%', ''), errors='coerce')
+
+        # Fill missing scores so the slider doesn't crash
+        if 'data_quality_score' in df.columns:
+            df['data_quality_score'] = df['data_quality_score'].fillna(0)
+
         return df
-    except FileNotFoundError:
-        st.error("❌ Data file not found! Make sure 'data/processed/meth_structured_data.csv' exists.")
+    except Exception as e:
+        st.error(f"Error loading data: {e}")
         st.stop()
 
 def create_metrics_row(df):
