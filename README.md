@@ -127,8 +127,6 @@ Methemoglobin forms when iron in hemoglobin oxidizes (Fe²⁺ → Fe³⁺), losi
 ![Data Table](screenshots/data_table.png)
 *Sortable, searchable table with all extracted clinical variables. One-click CSV export for further analysis.*
 
-**🎥 [Watch Dashboard Demo Video](YOUR_DEMO_VIDEO_URL)** *(optional - add a 2-min screen recording)*
-
 ---
 
 ## Technologies Used
@@ -143,7 +141,6 @@ Methemoglobin forms when iron in hemoglobin oxidizes (Fe²⁺ → Fe³⁺), losi
 | **Deployment** | Streamlit Cloud, Git/GitHub |
 
 ---
-
 ## Installation
 
 ### Quick Start
@@ -163,7 +160,7 @@ python -m spacy download en_core_web_sm
 streamlit run dashboard.py
 ```
 
-Dashboard opens at `http://localhost:8501`
+Dashboard opens at `https://methemoglobinemia-nlp-analysis-123.streamlit.app/`
 
 ### Full Pipeline (Optional)
 
