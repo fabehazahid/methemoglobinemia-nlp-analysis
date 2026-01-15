@@ -40,10 +40,10 @@ st.markdown("""
 def load_data():
     """Load and cache the data"""
     try:
-        df = pd.read_csv('data/processed/methb_structured_data.csv')
+        df = pd.read_csv('data/processed/meth_structured_data.csv')
         return df
     except FileNotFoundError:
-        st.error("❌ Data file not found! Make sure 'data/processed/methb_structured_data.csv' exists.")
+        st.error("❌ Data file not found! Make sure 'data/processed/meth_structured_data.csv' exists.")
         st.stop()
 
 def create_metrics_row(df):
