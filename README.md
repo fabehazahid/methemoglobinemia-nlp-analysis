@@ -49,7 +49,7 @@ Data Acquisition → Text Extraction → NLP Processing → Analytics → Intera
 
 1. **Data Acquisition Layer**
    - PubMed Entrez API for abstracts (N=27)
-   - PubMed Central for open-access full-text PDFs (N=6)
+   - PubMed Central for open-access full-text PDFs (N=8)
    - Search strategy: `"methemoglobinemia" AND "case report"`
 
 2. **NLP Processing Engine**
