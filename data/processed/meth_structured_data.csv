@@ -1,4 +1,4 @@
-pmid,methb_level,trigger,trigger_route,treatment,,symptoms,age,gender,g6pd_status,time_to_improvement,outcome,data_quality_score,source_file,source_type
+pmid,methb_level,trigger,trigger_route,treatment,,symptoms,age,gender,g6pd_status,,outcome,data_quality_score,source_file,source_type
 10616167,Unknown,Benzocaine,Topical,Methylene Blue,,Cyanosis,Unknown,Unknown,Not mentioned,,Unknown,42,abstract_10616167.txt,abstract
 15106687,Unknown,Sulfonamides,Oral,Supportive,,Cyanosis,24,Female,Not mentioned,,Unknown,71,abstract_15106687.txt,abstract
 16640711,Unknown,Benzocaine,Topical,Methylene Blue,,None specified,,Unknown,Not mentioned,,Fatal,42,abstract_16640711.txt,abstract
