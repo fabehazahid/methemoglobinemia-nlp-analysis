@@ -1,18 +1,18 @@
 # Clinical NLP & Analytics for Methemoglobinemia: Automated Knowledge Extraction from Medical Literature
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](YOUR_DEPLOYED_URL_HERE)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]https://methemoglobinemia-nlp-analysis-123.streamlit.app/
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 🔬 Overview
+##  Overview
 
 Methemoglobinemia is a hematological disorder characterized by elevated methemoglobin (MetHb) levels—an oxidized form of hemoglobin incapable of oxygen transport. Clinical data is fragmented across medical literature, making systematic analysis of trigger-severity relationships and treatment efficacy challenging. This project implements an automated NLP pipeline to extract, structure, and analyze clinical data from case reports, enabling evidence-based insights and interactive exploration.
 
-**Live Dashboard**: [View Interactive Analytics](YOUR_STREAMLIT_URL_HERE)
+**Live Dashboard**: [View Interactive Analytics]https://methemoglobinemia-nlp-analysis-123.streamlit.app/
 
 ---
 
-## 🎯 Problem Statement
+##  Problem Statement
 
 ### Clinical Challenge
 
@@ -38,7 +38,7 @@ Manual extraction from 100+ case reports is prohibitively time-intensive for sys
 
 ---
 
-## 🏗️ System Architecture
+##  System Architecture
 
 ```
 Data Acquisition → Text Extraction → NLP Processing → Analytics → Interactive Dashboard
@@ -66,8 +66,7 @@ Data Acquisition → Text Extraction → NLP Processing → Analytics → Intera
 3. **Structured Data Schema**
    ```
    Variables: pmid, meth_level, trigger, treatment, age, gender, symptoms,
-              outcome, g6pd_status, mb_dose, time_to_improvement,
-              data_quality_score
+              outcome, g6pd_status, mb_dose, data_quality_score
    ```
 
 4. **Analytics Module**
@@ -83,12 +82,12 @@ Data Acquisition → Text Extraction → NLP Processing → Analytics → Intera
 
 ---
 
-## 📊 Key Findings
+##  Key Findings
 
 ### Dataset Characteristics
-- **N = 33** case reports (27 abstracts, 6 full-text PDFs)
-- **MetHb data**: 28 cases (84.8% coverage)
-- **Mean MetHb level**: 37.2% ± 14.3% (severe category)
+- **N = 35** case reports (27 abstracts, 8 full-text PDFs)
+- **MetHb data**: 15 cases (42.85% coverage)
+- **Mean MetHb level**: 37.2%  (severe category)
 - **Range**: 12.0% - 89.0%
 
 ### Trigger-Severity Insights
@@ -102,19 +101,19 @@ Data Acquisition → Text Extraction → NLP Processing → Analytics → Intera
 | **Genetic** | 2 (6%) | 15-20% | Chronic compensated | Baseline elevation, exacerbated by oxidative stress |
 
 ### Treatment Outcomes
-- **Methylene blue administration**: 73% of cases (24/33)
-- **Recovery rate with MB**: 96% (23/24)
+- **Methylene blue administration**: 85.7% of cases (30/35)
+- **Recovery rate with MB**: 47.1% (8/17)
 - **Median response time**: 60 minutes (range: 30 min - 4 hours)
 - **G6PD documentation**: Only 6% of cases explicitly mentioned (major clinical gap)
 
 ### Clinical Correlations
-- **Age distribution**: Bimodal peaks at 20-30 and 60-70 years
-- **Severity stratification**: 54% severe (≥30%), 36% moderate (15-30%), 11% mild (<15%)
-- **Overall mortality**: 6% (2/33), both with MetHb >60% and delayed recognition
+- **Age distribution**: Bimodal peaks at 10-19 and 50-59 years
+- **Severity stratification**: 53.33% severe (≥30%), 26.6% moderate (15-30%), 20% mild (<15%)
+- **Overall mortality**: 8.5% (3/35)
 
 ---
 
-## 🖥️ Interactive Dashboard
+##  Interactive Dashboard
 
 ### Features
 
@@ -139,7 +138,7 @@ Data Acquisition → Text Extraction → NLP Processing → Analytics → Intera
 
 ---
 
-## 🚀 Installation & Usage
+##  Installation & Usage
 
 ### Quick Start
 
@@ -179,7 +178,7 @@ streamlit run dashboard.py
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 methemoglobinemia-nlp-analysis/
@@ -205,7 +204,7 @@ methemoglobinemia-nlp-analysis/
 
 ---
 
-## 🛠️ Technologies
+##  Technologies
 
 | Component | Technology | Version |
 |-----------|-----------|---------|
@@ -218,7 +217,7 @@ methemoglobinemia-nlp-analysis/
 
 ---
 
-## 🏥 Clinical Significance
+##  Clinical Significance
 
 ### Impact
 
@@ -249,7 +248,7 @@ methemoglobinemia-nlp-analysis/
 
 ---
 
-## 🔮 Future Directions
+##  Future Directions
 
 ### Technical Enhancements
 - **Advanced NLP**: Implement BioBERT/ClinicalBERT for improved entity recognition
@@ -269,22 +268,22 @@ methemoglobinemia-nlp-analysis/
 
 ---
 
-## 📄 Citation
+##  Citation
 
 If you use this work in your research, please cite:
 
 ```bibtex
 @software{methemoglobinemia_nlp_2025,
-  author = {Your Name},
+  author = {Fabeha Zahid Mahmood},
   title = {Clinical NLP \& Analytics for Methemoglobinemia: Automated Knowledge Extraction from Medical Literature},
   year = {2025},
-  url = {https://github.com/YOUR_USERNAME/methemoglobinemia-nlp-analysis}
+  url = {https://github.com/fabehazahid/methemoglobinemia-nlp-analysis}
 }
 ```
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! Areas for improvement:
 - Expanding trigger keyword dictionaries
@@ -296,22 +295,22 @@ Please open an issue or submit a pull request.
 
 ---
 
-## 📜 License
+##  License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 📧 Contact
+##  Contact
 
-**Author**: Your Name  
-**Email**: your.email@example.com  
-**LinkedIn**: [your-profile](https://linkedin.com/in/your-profile)  
-**GitHub**: [@your-username](https://github.com/your-username)
+**Author**: Fabeha Zahid Mahmood
+**Email**: fabehazahid@gmail.com 
+**LinkedIn**: Fabeha Zahid Mahmood(www.linkedin.com/in/fabeha-zahid-mahmood-b5ba3228a)  
+**GitHub**: [@fabehazahid](https://github.com/fabehazahid)
 
 ---
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - **Data sources**: National Library of Medicine (PubMed/PMC)
 - **NLP tools**: spaCy, Hugging Face
@@ -320,4 +319,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**⭐ If you find this project useful, please consider starring the repository!**
+** If you find this project useful, please consider starring the repository!**
