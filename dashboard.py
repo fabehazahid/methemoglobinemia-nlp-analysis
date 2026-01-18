@@ -33,7 +33,7 @@ def get_base64_of_bin_file(bin_file):
         return ""
 
 # Path to the generated background image
-BACKGROUND_IMAGE_PATH = r"C:/Users/Fabeha/.gemini/antigravity/brain/3f5fe063-8243-4597-b3e7-421d90e7e1fc/background_rbc_1768756815374.png"
+BACKGROUND_IMAGE_PATH = Path(__file__).parent / "assets" / "background_rbc.png"
 background_base64 = get_base64_of_bin_file(BACKGROUND_IMAGE_PATH)
 
 # Refined Palette
