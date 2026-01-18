@@ -39,7 +39,7 @@ background_base64 = get_base64_of_bin_file(BACKGROUND_IMAGE_PATH)
 # Refined Palette
 PRIMARY_COLOR = "#800000"  # Oxblood
 TEXT_COLOR = "#FFFFFF"
-BG_OVERLAY = "rgba(10, 10, 20, 0.85)" # Dark overlay
+BG_OVERLAY = "rgba(5, 5, 10, 0.92)" # Darker overlay for better text contrast
 CARD_BG = "rgba(30, 30, 40, 0.9)" 
 
 # -----------------------------------------------------------------------------
@@ -66,7 +66,7 @@ st.markdown(f"""
     /* Headers */
     h1, h2, h3, h4, h5 {{
         font-family: 'Montserrat', sans-serif;
-        color: #f0f0f0 !important;
+        color: #FFFFFF !important;
         text-transform: uppercase;
         letter-spacing: 1px;
     }}
@@ -99,7 +99,8 @@ st.markdown(f"""
     }}
     
     .stMarkdown p {{
-        color: #e0e0e0;
+        color: #ffffff;
+        font-size: 1.05rem;
     }}
 
     /* Tabs */
