@@ -95,9 +95,9 @@ background_base64 = get_base64_of_bin_file(BACKGROUND_IMAGE_PATH)
 # All colors selected for WCAG AAA compliance (7:1 contrast ratio minimum).
 
 # Primary Colors
-PRIMARY_COLOR = "#8B1538"        # Clinical Maroon (primary accent, represents blood/hemoglobin)
-SECONDARY_COLOR = "#C41E3A"      # Alert Red (secondary accent, critical indicators)
-TERTIARY_COLOR = "#D4858D"       # Muted Rose (tertiary/hover states)
+PRIMARY_COLOR = "#A61B41"        # Lighter Clinical Maroon
+SECONDARY_COLOR = "#E63946"      # Brighter Alert Red
+TERTIARY_COLOR = "#E9A3A9"       # Lighter Muted Rose
 
 # Background Colors
 BG_DEEP_CHARCOAL = "#1a1a1a"     # Deep charcoal (main background)
@@ -114,7 +114,7 @@ COLOR_NEUTRAL = "#5C7A99"        # Steel Blue (neutral/charts/unknown)
 
 # Text Colors
 TEXT_PRIMARY = "#FFFFFF"         # Primary text (white)
-TEXT_SECONDARY = "#B0B0B0"       # Secondary text (light gray)
+TEXT_SECONDARY = "#D1D1D1"       # Lighter gray for better visibility
 TEXT_MUTED = "#888888"           # Muted text (darker gray)
 
 # Borders & Dividers
@@ -136,8 +136,12 @@ st.markdown(f"""
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Source+Sans+Pro:wght@300;400;600&family=Montserrat:wght@600;700;800&family=JetBrains+Mono:wght@400&display=swap');
     
     /* =========================================================================
-       GLOBAL STYLES
+       GLOBAL SCALING - Emulates 80% zoom at 100%
        ========================================================================= */
+    html {{
+        font-size: 85% !important; /* Base scale for all rem units */
+    }}
+
     .stApp {{
         background-image: linear-gradient({BG_OVERLAY}, {BG_OVERLAY}), url("data:image/png;base64,{background_base64}");
         background-attachment: fixed;
@@ -160,12 +164,12 @@ st.markdown(f"""
     }}
     
     h1 {{
-        font-size: 2.5rem;
+        font-size: 2.2rem;
         font-weight: 700;
         letter-spacing: 1px;
         border-bottom: 2px solid {PRIMARY_COLOR};
-        padding-bottom: 10px;
-        margin-bottom: 20px;
+        padding-bottom: 8px;
+        margin-bottom: 16px;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }}
 
@@ -176,11 +180,11 @@ st.markdown(f"""
     }}
 
     h3 {{
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         font-weight: 600;
         border-left: 4px solid {PRIMARY_COLOR};
-        padding-left: 16px;
-        margin-top: 20px;
+        padding-left: 14px;
+        margin-top: 16px;
         background: linear-gradient(90deg, rgba(139, 21, 56, 0.15), transparent);
     }}
 
@@ -201,20 +205,20 @@ st.markdown(f"""
     
     section[data-testid="stSidebar"] h1 {{
         color: {SECONDARY_COLOR} !important;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         font-weight: 700;
-        letter-spacing: 2px;
+        letter-spacing: 1.5px;
         text-transform: uppercase;
         border-bottom: 2px solid;
         border-image: linear-gradient(90deg, {SECONDARY_COLOR}, transparent) 1;
-        padding-bottom: 12px;
-        margin-bottom: 24px;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
     }}
     
     .stMarkdown p {{
         color: {TEXT_PRIMARY};
-        font-size: 1.05rem;
-        line-height: 1.6;
+        font-size: 1rem;
+        line-height: 1.5;
     }}
 
     /* =========================================================================
@@ -222,11 +226,11 @@ st.markdown(f"""
        ========================================================================= */
     .metric-card {{
         background: linear-gradient(135deg, rgba(37, 37, 37, 0.9) 0%, rgba(45, 20, 25, 0.8) 100%);
-        border-left: 5px solid {PRIMARY_COLOR};
-        border-radius: 10px;
-        padding: 24px;
+        border-left: 4px solid {PRIMARY_COLOR};
+        border-radius: 8px;
+        padding: 20px;
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-        min-height: 140px;
+        min-height: 120px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -249,7 +253,7 @@ st.markdown(f"""
     
     .metric-value {{
         color: {TEXT_PRIMARY};
-        font-size: 2.5rem;
+        font-size: 2.2rem;
         font-weight: 800;
         font-family: 'Montserrat', sans-serif;
         line-height: 1;
@@ -265,15 +269,15 @@ st.markdown(f"""
             rgba(26, 26, 26, 0.95) 100%);
         border-top: 1px solid rgba(139, 21, 56, 0.3);
         border-bottom: 1px solid rgba(139, 21, 56, 0.3);
-        padding: 100px 40px 80px 40px;
+        padding: 80px 32px 64px 32px;
         text-align: center;
-        margin-bottom: 50px;
+        margin-bottom: 40px;
         position: relative;
         overflow: hidden;
         margin-left: -5rem;
         margin-right: -5rem;
-        padding-left: calc(5rem + 40px);
-        padding-right: calc(5rem + 40px);
+        padding-left: calc(5rem + 32px);
+        padding-right: calc(5rem + 32px);
     }}
     
     /* Subtle accent line above hero with expansion animation */
@@ -300,12 +304,12 @@ st.markdown(f"""
     }}
     
     .hero-title {{
-        font-size: 4rem;
+        font-size: 3.2rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 12px;
-        margin-bottom: 20px;
+        gap: 10px;
+        margin-bottom: 16px;
         font-family: 'Inter', sans-serif;
     }}
     
@@ -318,18 +322,18 @@ st.markdown(f"""
     }}
     
     .brand-superscript {{
-        width: 32px;
-        height: 32px;
+        width: 26px;
+        height: 26px;
         background: {SECONDARY_COLOR};
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         font-weight: 600;
         color: {TEXT_PRIMARY};
         position: relative;
-        top: -8px;
+        top: -6px;
         box-shadow: 0 0 20px rgba(196, 30, 58, 0.6);
     }}
     
@@ -348,11 +352,11 @@ st.markdown(f"""
     }}
     
     .hero-subtitle {{
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         color: {TEXT_SECONDARY};
         font-weight: 300;
         letter-spacing: 1px;
-        margin-top: 16px;
+        margin-top: 13px;
         font-family: 'Source Sans Pro', sans-serif;
     }}
 
@@ -363,22 +367,22 @@ st.markdown(f"""
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 20px;
-        margin: 40px 0;
+        gap: 16px;
+        margin: 32px 0;
         flex-wrap: wrap;
         background: rgba(20, 20, 25, 0.6);
-        border-radius: 12px;
-        padding: 40px 30px;
+        border-radius: 10px;
+        padding: 32px 24px;
     }}
     
     .pipeline-step {{
         background: rgba(37, 37, 37, 0.9);
-        border: 2px solid {PRIMARY_COLOR};
-        padding: 16px 28px;
-        border-radius: 24px;
+        border: 1.5px solid {PRIMARY_COLOR};
+        padding: 13px 22px;
+        border-radius: 20px;
         color: {TEXT_PRIMARY};
         font-weight: 600;
-        font-size: 0.95rem;
+        font-size: 0.85rem;
         position: relative;
         transition: all 0.3s ease;
     }}
@@ -391,24 +395,24 @@ st.markdown(f"""
     
     .pipeline-step-number {{
         position: absolute;
-        top: -8px;
-        right: -8px;
+        top: -6px;
+        right: -6px;
         background: {SECONDARY_COLOR};
         color: {TEXT_PRIMARY};
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.75rem;
+        font-size: 0.65rem;
         font-weight: 700;
         box-shadow: 0 2px 8px rgba(196, 30, 58, 0.5);
     }}
     
     .pipeline-arrow {{
         color: {PRIMARY_COLOR};
-        font-size: 24px;
+        font-size: 20px;
         font-weight: bold;
     }}
 
@@ -417,25 +421,25 @@ st.markdown(f"""
        ========================================================================= */
     .header-buttons {{
         position: absolute;
-        top: 20px;
-        right: 40px;
+        top: 16px;
+        right: 32px;
         display: flex;
-        gap: 12px;
+        gap: 10px;
     }}
     
     .icon-btn {{
         background-color: rgba(37, 37, 37, 0.8);
         border: 1px solid {BORDER_ACCENT};
         color: {TEXT_PRIMARY};
-        padding: 12px;
-        border-radius: 8px;
+        padding: 10px;
+        border-radius: 6px;
         text-decoration: none;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 44px;
-        height: 44px;
+        width: 36px;
+        height: 36px;
     }}
     
     .icon-btn:hover {{
@@ -458,8 +462,8 @@ st.markdown(f"""
     .chart-container {{
         background: rgba(25, 25, 30, 0.8);
         border: 1px solid {BORDER_COLOR};
-        border-radius: 12px;
-        padding: 24px;
+        border-radius: 10px;
+        padding: 20px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }}
 </style>
@@ -714,51 +718,83 @@ def get_dark_layout():
 
 def plot_meth_distribution(df):
     """
-    Plot histogram distribution of methemoglobin severity levels.
+    Plot histogram distribution of methemoglobin severity levels with clinical zones.
     
     Visualizes the frequency distribution of MetHb percentages across all cases,
-    helping identify common severity ranges and outliers. Clinical thresholds:
-    - Normal: <1% MetHb
-    - Mild: 1-15% (usually asymptomatic)
-    - Moderate: 15-30% (cyanosis, symptoms present)
-    - Severe: 30-50% (serious symptoms, requires urgent treatment)
-    - Critical: >50% (life-threatening, often fatal without intervention)
+    with background highlighting for clinical severity zones:
+    - Mild (<15%): Usually asymptomatic
+    - Moderate (15-30%): Cyanosis and symptoms present
+    - Severe (>=30%): Life-threatening thresholds
     
     Args:
-        df (pd.DataFrame): Case data with 'methb_level' column
-    
-    Note:
-        Uses 5% bin width for granular distribution view.
-        Color: Clinical maroon (#C41E3A) to represent blood/hemoglobin.
+        df (pd.DataFrame): Case data with 'meth_level' column
     """
-    meth_data = df['methb_level'].dropna()
+    # Note: Use 'meth_level' as per the schema found in nlp_extraction.py
+    # and the column name in load_data (which might be cleaning it)
+    # Checking column names in df
+    col_name = 'meth_level' if 'meth_level' in df.columns else 'methb_level'
+    
+    meth_data = df[col_name].dropna()
     if len(meth_data) == 0:
         st.warning("No MetHb level data available")
         return
     
     fig = go.Figure()
+    
+    # Add clinical severity zones as background rectangles
+    # Mild Zone
+    fig.add_vrect(
+        x0=0, x1=15, 
+        fillcolor="#2ECC71", opacity=0.1, 
+        layer="below", line_width=0,
+        annotation_text="MILD (<15%)", 
+        annotation_position="top left",
+        annotation_font=dict(size=10, color="#2ECC71")
+    )
+    
+    # Moderate Zone
+    fig.add_vrect(
+        x0=15, x1=30, 
+        fillcolor="#E67E22", opacity=0.1, 
+        layer="below", line_width=0,
+        annotation_text="MODERATE (15-30%)", 
+        annotation_position="top left",
+        annotation_font=dict(size=10, color="#E67E22")
+    )
+    
+    # Severe Zone
+    fig.add_vrect(
+        x0=30, x1=100, 
+        fillcolor="#C0392B", opacity=0.1, 
+        layer="below", line_width=0,
+        annotation_text="SEVERE (>=30%)", 
+        annotation_position="top left",
+        annotation_font=dict(size=10, color="#C0392B")
+    )
+
+    # Add the histogram
     fig.add_trace(go.Histogram(
         x=meth_data, 
         nbinsx=20, 
         name='MetHb Levels',
-        marker_color=SECONDARY_COLOR,  # Clinical maroon
-        opacity=0.85,
-        xbins=dict(start=0, end=100, size=5)
+        marker_color=SECONDARY_COLOR, 
+        opacity=0.9,
+        xbins=dict(start=0, end=100, size=5),
+        hovertemplate="<b>MetHb Range</b>: %{x}%<br><b>Frequency</b>: %{y} cases<extra></extra>"
     ))
     
-    fig.update_layout(
-        **get_dark_layout()
-    )
+    fig.update_layout(**get_dark_layout())
     fig.update_layout(
         title=dict(
-            text="Distribution of Methemoglobin Levels",
+            text="Distribution of Methemoglobin Levels by Clinical Severity",
             font=dict(size=16, color=TEXT_PRIMARY),
             x=0.02,
             xanchor='left'
         ),
-        xaxis_title="MetHb Level (%)",
-        yaxis_title="Count",
-        bargap=0.1
+        xaxis_title="Methemoglobin Level (%)",
+        yaxis_title="Frequency (Clinical Cases)",
+        bargap=0.1,
+        showlegend=False
     )
     st.plotly_chart(fig, use_container_width=True, config=get_plot_config())
 
@@ -1045,7 +1081,7 @@ def main():
             border: 1px solid transparent;
             border-radius: 8px;
             padding: 10px 20px;
-            color: #aaa;
+            color: #f0f0f0; /* Brighter white for better readability */
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             min-width: 100px;
@@ -1075,9 +1111,14 @@ def main():
             margin: 0;
         }}
         
-        /* Hide radio circles */
-        div[role="radiogroup"] input {{
+        /* Hide radio circles completely */
+        div[role="radiogroup"] [data-testid="stWidgetLabel"] {{
             display: none;
+        }}
+        div[role="radiogroup"] input, 
+        div[role="radiogroup"] [data-testid="stRadioButton"] div[class*="StyledControl"],
+        div[role="radiogroup"] [data-testid="stRadioButton"] div[class*="st-"] {{
+            display: none !important;
         }}
         
         /* =====================================================================
@@ -1347,19 +1388,26 @@ def main():
         with col2:
             st.subheader("Key Statistics")
             if not df.empty:
-                meth_data = df['methb_level'].dropna()
+                meth_data = df[col_name].dropna() if 'col_name' in locals() else df['methb_level'].dropna()
                 st.markdown(f"""
-                <div style="background: rgba(30,30,40,0.8); padding: 20px; border-radius: 4px; border: 1px solid #333; border-top: 3px solid #800000;">
-                    <h4 style="margin-top:0; color: #800000;">Severity Indices</h4>
-                    <ul style="list-style-type: none; padding-left: 0; font-size: 0.95rem; color: #ddd;">
-                        <li style="margin-bottom: 8px; display: flex; justify-content: space-between;">
-                            <span>Mild (&lt;15%)</span> <strong>{(meth_data < 15).sum()}</strong>
+                <div style="background: rgba(30,30,40,0.9); padding: 24px; border-radius: 12px; border: 1px solid {BORDER_COLOR}; border-top: 4px solid {SECONDARY_COLOR}; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+                    <h4 style="margin-top:0; color: {SECONDARY_COLOR}; letter-spacing: 1px; font-weight: 700;">SEVERITY INDICES</h4>
+                    <hr style="border-color: rgba(255,255,255,0.1); margin: 15px 0;">
+                    <ul style="list-style-type: none; padding-left: 0; font-size: 1rem; color: {TEXT_SECONDARY};">
+                        <li style="margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: #2ECC71;">●</span>
+                            <span style="flex-grow: 1; padding-left: 10px;">Mild (<15%)</span> 
+                            <strong style="color: white; font-size: 1.1rem;">{(meth_data < 15).sum()}</strong>
                         </li>
-                        <li style="margin-bottom: 8px; display: flex; justify-content: space-between;">
-                            <span>Moderate (15-30%)</span> <strong>{((meth_data >= 15) & (meth_data < 30)).sum()}</strong>
+                        <li style="margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: #E67E22;">●</span>
+                            <span style="flex-grow: 1; padding-left: 10px;">Moderate (15-30%)</span> 
+                            <strong style="color: white; font-size: 1.1rem;">{((meth_data >= 15) & (meth_data < 30)).sum()}</strong>
                         </li>
-                        <li style="margin-bottom: 8px; display: flex; justify-content: space-between;">
-                            <span style="color:#ff5252;">Severe (&ge;30%)</span> <strong style="color:#ff5252;">{(meth_data >= 30).sum()}</strong>
+                        <li style="margin-bottom: 0px; display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: #C0392B;">●</span>
+                            <span style="flex-grow: 1; padding-left: 10px; font-weight: 700; color: #ff7675;">Severe (≥30%)</span> 
+                            <strong style="color: #ff7675; font-size: 1.2rem; font-weight: 800;">{(meth_data >= 30).sum()}</strong>
                         </li>
                     </ul>
                 </div>

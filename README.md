@@ -1,12 +1,12 @@
 # Clinical NLP for Methemoglobinemia Analysis
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]https://methemoglobinemia-nlp-analysis-123.streamlit.app/
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://metahb.streamlit.app/)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > Automated NLP pipeline for extracting and analyzing clinical data from methemoglobinemia case reports, with interactive dashboard deployment.
 
-**[Live Dashboard]https://methemoglobinemia-nlp-analysis-123.streamlit.app/** | **[View Results](#key-findings)** | **[Quick Start](#installation)**
+**[Live Dashboard](https://metahb.streamlit.app/)** | **[View Results](#key-findings)** | **[Quick Start](#installation)**
 
 ---
 
@@ -160,7 +160,7 @@ python -m spacy download en_core_web_sm
 streamlit run dashboard.py
 ```
 
-Dashboard opens at `https://methemoglobinemia-nlp-analysis-123.streamlit.app/`
+Dashboard opens at `https://metahb.streamlit.app/`
 
 ### Full Pipeline (Optional)
 
