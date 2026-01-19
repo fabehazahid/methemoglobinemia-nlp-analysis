@@ -419,10 +419,11 @@ st.markdown(f"""
        ========================================================================= */
     .header-buttons {{
         position: absolute;
-        top: 8px; /* High enough to clear navigation but not overlap */
-        right: 32px;
+        top: 15px; /* Aligned with the tab row but far right */
+        right: 20px; /* Shifted to the far edge of the viewport */
+        padding-top: 10px;
         display: flex;
-        gap: 10px;
+        gap: 15px; /* Increased spacing between icons */
         z-index: 1000;
     }}
     
