@@ -1000,20 +1000,465 @@ def plot_treatment_outcomes(df):
 
 
 # =============================================================================
+# PROBABILITY ANALYSIS PAGE
+# =============================================================================
+
+def _warn_card(msg="Insufficient data for this analysis"):
+    """Render a styled warning card."""
+    st.markdown(f"""
+    <div style="background:rgba(230,126,34,0.15);border-left:4px solid {COLOR_WARNING};
+    border-radius:8px;padding:14px 18px;margin:8px 0;">
+      <span style="color:{COLOR_WARNING};font-weight:600;">{msg}</span>
+    </div>""", unsafe_allow_html=True)
+
+
+def _caption(text):
+    st.markdown(f'<p style="color:#888888;font-size:0.85rem;font-style:italic;margin-top:2px;">{text}</p>',
+                unsafe_allow_html=True)
+
+
+def _section_header(text):
+    st.markdown(f'<h3 style="color:#FFFFFF;border-left:4px solid {PRIMARY_COLOR};padding-left:14px;'
+                f'background:linear-gradient(90deg,rgba(139,21,56,0.15),transparent);margin-bottom:4px;">'
+                f'{text}</h3>', unsafe_allow_html=True)
+
+
+def _cond_card(accent, prob_val, denom, numer, formula_str, interpretation):
+    """Render a conditional probability card."""
+    if denom == 0:
+        pct_str = "N/A — insufficient data"
+        val_str = "N/A"
+        pct_line = ""
+    else:
+        val_str = f"{prob_val:.4f}"
+        pct_str = f"{prob_val*100:.1f}% of cases"
+        pct_line = f'<div style="font-size:1rem;color:{TEXT_SECONDARY};margin:4px 0;">{pct_str}</div>'
+    st.markdown(f"""
+    <div style="background:rgba(30,30,40,0.9);border-radius:10px;padding:16px;
+    border-left:3px solid {accent};margin-bottom:12px;">
+      <div style="font-size:1.6rem;color:#FFFFFF;font-weight:700;font-family:Montserrat,sans-serif;">{val_str}</div>
+      {pct_line}
+      <div style="font-size:0.8rem;color:#888;margin:4px 0;">{formula_str}</div>
+      <div style="font-size:0.82rem;color:{TERTIARY_COLOR};margin-top:6px;">{interpretation}</div>
+    </div>""", unsafe_allow_html=True)
+
+
+def _stats_table(data, header):
+    """Render a two-column HTML stats table inside a dark card."""
+    formulas = {
+        "Mean": "Σxᵢ / n",
+        "Std Dev": "√(Σ(xᵢ-x̄)² / n)",
+        "Variance": "(Σ(xᵢ-x̄)² / n)",
+        "IQR": "Q3 − Q1",
+    }
+    rows_html = ""
+    for i, (stat, val) in enumerate(data):
+        bg = "rgba(255,255,255,0.03)" if i % 2 == 0 else "transparent"
+        formula_html = ""
+        if stat in formulas:
+            formula_html = f'<br><span style="color:#888;font-size:0.75rem;">{formulas[stat]}</span>'
+        rows_html += f"""
+        <tr style="background:{bg};">
+          <td style="padding:8px 12px;color:{TEXT_SECONDARY};">{stat}{formula_html}</td>
+          <td style="padding:8px 12px;text-align:right;font-weight:700;color:#FFFFFF;
+              font-family:Montserrat,sans-serif;">{val}</td>
+        </tr>"""
+    st.markdown(f"""
+    <div style="background:rgba(30,30,40,0.9);border-radius:12px;border:1px solid {BORDER_COLOR};
+    padding:16px;margin-top:8px;">
+      <div style="font-weight:600;color:#FFFFFF;margin-bottom:10px;">{header}</div>
+      <table style="width:100%;border-collapse:collapse;">
+        <thead>
+          <tr style="border-bottom:1px solid {BORDER_COLOR};">
+            <th style="padding:8px 12px;text-align:left;color:{TEXT_SECONDARY};font-size:0.85rem;">Statistic</th>
+            <th style="padding:8px 12px;text-align:right;color:{TEXT_SECONDARY};font-size:0.85rem;">Value</th>
+          </tr>
+        </thead>
+        <tbody>{rows_html}</tbody>
+      </table>
+    </div>""", unsafe_allow_html=True)
+
+
+def render_probability_analysis(df):
+    """Render the full Probability & Statistical Analysis page."""
+
+    # ── Inject expander border CSS ─────────────────────────────────────────
+    st.markdown(f"""
+    <style>
+    div[data-testid="stExpander"] {{
+        border: 1px solid rgba(139,21,56,0.3) !important;
+        border-radius: 12px !important;
+        margin-bottom: 16px;
+    }}
+    div[data-testid="stExpander"] summary {{
+        color: #a0a0a0 !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.4px;
+    }}
+    div[data-testid="stExpander"] summary p,
+    div[data-testid="stExpander"] summary span,
+    div[data-testid="stExpander"] summary svg {{
+        color: #a0a0a0 !important;
+        fill: #a0a0a0 !important;
+    }}
+    div[data-testid="stExpander"] summary:hover,
+    div[data-testid="stExpander"] summary:hover p,
+    div[data-testid="stExpander"] summary:hover span {{
+        color: #a0a0a0 !important;
+    }}
+    </style>""", unsafe_allow_html=True)
+
+    total_cases = len(df)
+
+    # ── Intro card ─────────────────────────────────────────────────────────
+    st.markdown(f"""
+    <div style="background:rgba(30,30,40,0.9);border-radius:12px;border:1px solid {BORDER_COLOR};
+    padding:24px 28px;margin-bottom:24px;">
+      <h2 style="color:#FFFFFF;margin:0 0 8px 0;font-family:Inter,sans-serif;">
+        Probability &amp; Statistical Analysis</h2>
+      <p style="color:{TEXT_SECONDARY};margin:0 0 6px 0;">
+        All probabilities computed from <strong style="color:#FFFFFF;">n={total_cases}</strong>
+        extracted case reports using empirical frequency methods.</p>
+      <p style="color:#888888;font-size:0.85rem;font-style:italic;margin:0;">
+        Severity classification: Mild &lt; 15% | Moderate 15–30% | Severe ≥ 30% MetHb</p>
+    </div>""", unsafe_allow_html=True)
+
+    # ── Derive helper columns ──────────────────────────────────────────────
+    df = df.copy()
+    if 'severity' not in df.columns and 'methb_level' in df.columns:
+        def _sev(v):
+            if pd.isna(v): return np.nan
+            if v < 15: return 'Mild'
+            if v < 30: return 'Moderate'
+            return 'Severe'
+        df['severity'] = df['methb_level'].apply(_sev)
+
+    if 'age_group' not in df.columns and 'age' in df.columns:
+        def _ag(v):
+            if pd.isna(v): return np.nan
+            if v < 18: return '<18'
+            if v < 40: return '18–40'
+            if v < 60: return '40–60'
+            return '60+'
+        df['age_group'] = df['age'].apply(_ag)
+
+    # ══════════════════════════════════════════════════════════════════════
+    # SECTION 1 — Empirical Probability
+    # ══════════════════════════════════════════════════════════════════════
+    with st.expander("Empirical Probability", expanded=True):
+        c1, c2, c3 = st.columns(3)
+
+        # Left — Trigger probabilities
+        with c1:
+            _section_header("P(Trigger)")
+            _caption("Formula: count(trigger) ÷ total cases with known trigger")
+            try:
+                trig_df = df[df['trigger'].notna() & (df['trigger'] != 'Unknown')]
+                total_known = len(trig_df)
+                if total_known == 0:
+                    _warn_card()
+                else:
+                    tc = trig_df['trigger'].value_counts().reset_index()
+                    tc.columns = ['Trigger', 'Count']
+                    tc['P(trigger)'] = tc['Count'].apply(
+                        lambda x: f"{x/total_known:.4f} ({x/total_known*100:.1f}%)")
+                    max_idx = tc['Count'].idxmax()
+
+                    def highlight_max(row):
+                        color = f'background-color: rgba(230,126,34,0.25); color: {COLOR_WARNING};' \
+                            if row.name == max_idx else ''
+                        return [color] * len(row)
+
+                    styled = tc.style.apply(highlight_max, axis=1)
+                    st.dataframe(styled, use_container_width=True, hide_index=True)
+            except Exception:
+                _warn_card()
+
+        # Middle — Severity probabilities
+        with c2:
+            _section_header("P(Severity Level)")
+            _caption("Formula: count(severity) ÷ total cases with MetHb data")
+            try:
+                sev_data = df['severity'].dropna()
+                n_sev = len(sev_data)
+                if n_sev == 0:
+                    _warn_card()
+                else:
+                    for label, col in [('Mild', COLOR_SUCCESS),
+                                       ('Moderate', COLOR_WARNING),
+                                       ('Severe', COLOR_FATAL)]:
+                        cnt = (sev_data == label).sum()
+                        p = cnt / n_sev
+                        metric_card(f"P({label})", f"{p:.4f}  ({p*100:.1f}%)",
+                                    border_color=col)
+            except Exception:
+                _warn_card()
+
+        # Right — Age group probabilities
+        with c3:
+            _section_header("P(Age Group)")
+            _caption("Formula: count(age group) ÷ total cases with age data")
+            try:
+                ag_data = df['age_group'].dropna()
+                n_ag = len(ag_data)
+                if n_ag == 0:
+                    _warn_card()
+                else:
+                    order = ['<18', '18–40', '40–60', '60+']
+                    ag_counts = ag_data.value_counts().reindex(order, fill_value=0)
+                    fig = go.Figure(go.Bar(
+                        x=ag_counts.values,
+                        y=ag_counts.index,
+                        orientation='h',
+                        marker_color=COLOR_NEUTRAL,
+                        text=ag_counts.values,
+                        texttemplate='%{text}',
+                        textposition='outside',
+                    ))
+                    fig.update_layout(**get_dark_layout())
+                    fig.update_layout(
+                        title=dict(text="Age Group Distribution",
+                                   font=dict(size=14, color=TEXT_PRIMARY), x=0.02),
+                        margin=dict(l=60, r=60, t=50, b=30),
+                        yaxis=dict(categoryorder='array', categoryarray=order)
+                    )
+                    st.plotly_chart(fig, use_container_width=True, config=get_plot_config())
+            except Exception:
+                _warn_card()
+
+    # ══════════════════════════════════════════════════════════════════════
+    # SECTION 2 — Conditional Probability
+    # ══════════════════════════════════════════════════════════════════════
+    with st.expander("Conditional Probability", expanded=True):
+        _caption("P(A|B) = P(A ∩ B) ÷ P(B) = count(A and B) ÷ count(B)")
+        st.markdown("<br>", unsafe_allow_html=True)
+        col_a, col_b = st.columns(2)
+
+        # Card 1 — P(Severe | Dapsone)
+        with col_a:
+            try:
+                dapsone = df[df['trigger'].str.contains('Dapsone', case=False, na=False)]
+                den1 = len(dapsone)
+                num1 = (dapsone['severity'] == 'Severe').sum() if den1 > 0 else 0
+                p1 = num1 / den1 if den1 > 0 else 0
+                _cond_card(
+                    COLOR_FATAL, p1, den1, num1,
+                    f"count(Severe ∩ Dapsone) / count(Dapsone) = {num1} / {den1}",
+                    f"Of Dapsone cases, {p1*100:.1f}% reached critical MetHb levels"
+                )
+            except Exception:
+                _warn_card()
+
+        # Card 2 — P(Severe | age > 40)
+        with col_b:
+            try:
+                over40 = df[df['age'].notna() & (df['age'] > 40)]
+                den2 = len(over40)
+                num2 = (over40['severity'] == 'Severe').sum() if den2 > 0 else 0
+                p2 = num2 / den2 if den2 > 0 else 0
+                _cond_card(
+                    COLOR_WARNING, p2, den2, num2,
+                    f"count(Severe ∩ age>40) / count(age>40) = {num2} / {den2}",
+                    f"Patients over 40 show a {p2*100:.1f}% severe case rate"
+                )
+            except Exception:
+                _warn_card()
+
+        col_c, col_d = st.columns(2)
+
+        # Card 3 — P(Cyanosis | Severe)
+        with col_c:
+            try:
+                severe_cases = df[df['severity'] == 'Severe']
+                den3 = len(severe_cases)
+                num3 = severe_cases['symptoms'].str.contains('Cyanosis', case=False, na=False).sum() if den3 > 0 else 0
+                p3 = num3 / den3 if den3 > 0 else 0
+                _cond_card(
+                    "#9B59B6", p3, den3, num3,
+                    f"count(Cyanosis ∩ Severe) / count(Severe) = {num3} / {den3}",
+                    f"Cyanosis is present in {p3*100:.1f}% of severe MetHb cases"
+                )
+            except Exception:
+                _warn_card()
+
+        # Card 4 — P(Recovery | Methylene Blue)
+        with col_d:
+            try:
+                mb = df[df['treatment'].str.contains('Methylene Blue', case=False, na=False)]
+                den4 = len(mb)
+                num4 = (mb['outcome'] == 'Recovered').sum() if den4 > 0 else 0
+                p4 = num4 / den4 if den4 > 0 else 0
+                _cond_card(
+                    COLOR_SUCCESS, p4, den4, num4,
+                    f"count(Recovered ∩ MB) / count(MB) = {num4} / {den4}",
+                    f"Methylene Blue achieves {p4*100:.1f}% recovery rate in reported cases"
+                )
+            except Exception:
+                _warn_card()
+
+    # ══════════════════════════════════════════════════════════════════════
+    # SECTION 3 — Joint Probability
+    # ══════════════════════════════════════════════════════════════════════
+    with st.expander("Joint Probability", expanded=True):
+        _caption("P(A ∩ B) = count(A and B) ÷ total cases")
+        st.markdown("<br>", unsafe_allow_html=True)
+        col_j1, col_j2 = st.columns(2)
+
+        def _joint_heatmap(data_df, row_col, col_label, colorscale, title, total_n, key_prefix):
+            sev_order = ['Mild', 'Moderate', 'Severe']
+            try:
+                sub = data_df[[row_col, 'severity']].dropna()
+                if sub.empty:
+                    _warn_card()
+                    return
+                ct = pd.crosstab(sub[row_col], sub['severity'])
+                for s in sev_order:
+                    if s not in ct.columns:
+                        ct[s] = 0
+                ct = ct[sev_order]
+                zvals = ct
+                ztxt = ct.values
+                # Build per-cell text colors: dark text on light cells, white on dark cells
+                z_arr = zvals.values.astype(float)
+                z_min, z_max = z_arr.min(), z_arr.max()
+                z_range = z_max - z_min if z_max != z_min else 1
+                text_colors = []
+                for row_vals in z_arr:
+                    row_colors = []
+                    for v in row_vals:
+                        norm = (v - z_min) / z_range  # 0=lightest, 1=darkest
+                        row_colors.append('white' if norm > 0.45 else '#111111')
+                    text_colors.append(row_colors)
+                # Build annotations with contrast-aware colors
+                annotations = []
+                for i, row_vals in enumerate(ztxt):
+                    for j, val in enumerate(row_vals):
+                        annotations.append(dict(
+                            x=sev_order[j],
+                            y=ct.index.tolist()[i],
+                            text=str(int(val)),
+                            font=dict(color=text_colors[i][j], size=12, family='Inter'),
+                            showarrow=False,
+                        ))
+                fig = go.Figure(go.Heatmap(
+                    z=zvals.values,
+                    x=sev_order,
+                    y=ct.index.tolist(),
+                    colorscale=colorscale,
+                    showscale=True,
+                ))
+                fig.update_layout(**get_dark_layout())
+                fig.update_layout(
+                    title=dict(text=title, font=dict(size=13, color=TEXT_PRIMARY), x=0.02),
+                    margin=dict(l=120, r=20, t=50, b=40),
+                    annotations=annotations,
+                )
+                st.plotly_chart(fig, use_container_width=True, config=get_plot_config())
+            except Exception:
+                _warn_card()
+
+        with col_j1:
+            _section_header("Trigger × Severity")
+            df_j1 = df[df['trigger'].notna() & (df['trigger'] != 'Unknown')]
+            _joint_heatmap(df_j1, 'trigger', 'Severity', 'Reds',
+                           'Trigger × Severity Joint Distribution', total_cases, 'trig_sev')
+
+        with col_j2:
+            _section_header("Age Group × Severity")
+            _joint_heatmap(df, 'age_group', 'Severity', 'Blues',
+                           'Age Group × Severity Joint Distribution', total_cases, 'age_sev')
+
+    # ══════════════════════════════════════════════════════════════════════
+    # SECTION 4 — Descriptive Statistics
+    # ══════════════════════════════════════════════════════════════════════
+    with st.expander("Descriptive Statistics", expanded=True):
+        _caption("Summary statistics for continuous clinical variables")
+        st.markdown("<br>", unsafe_allow_html=True)
+        cs1, cs2 = st.columns(2)
+
+        def _build_stats(series, label):
+            s = series.dropna()
+            if len(s) == 0:
+                return None
+            q1, q3 = np.percentile(s, 25), np.percentile(s, 75)
+            return [
+                ("n", f"{len(s)}"),
+                ("Mean", f"{s.mean():.4f}"),
+                ("Median", f"{s.median():.4f}"),
+                ("Std Dev", f"{s.std(ddof=0):.4f}"),
+                ("Variance", f"{s.var(ddof=0):.4f}"),
+                ("Min", f"{s.min():.4f}"),
+                ("Max", f"{s.max():.4f}"),
+                ("Q1 (25th %ile)", f"{q1:.4f}"),
+                ("Q3 (75th %ile)", f"{q3:.4f}"),
+                ("IQR", f"{q3-q1:.4f}"),
+            ]
+
+        with cs1:
+            try:
+                rows = _build_stats(df['methb_level'], 'MetHb')
+                if rows:
+                    _stats_table(rows, "Methemoglobin Level (%)")
+                else:
+                    _warn_card()
+            except Exception:
+                _warn_card()
+
+        with cs2:
+            try:
+                rows = _build_stats(df['age'], 'Age')
+                if rows:
+                    _stats_table(rows, "Patient Age (years)")
+                else:
+                    _warn_card()
+            except Exception:
+                _warn_card()
+
+        # Violin plot
+        st.markdown("<br>", unsafe_allow_html=True)
+        try:
+            df_vio = df[df['severity'].notna() & df['methb_level'].notna()]
+            if df_vio.empty:
+                _warn_card()
+            else:
+                sev_colors = {'Mild': COLOR_SUCCESS, 'Moderate': COLOR_WARNING, 'Severe': COLOR_FATAL}
+                fig_v = go.Figure()
+                for sev, col in sev_colors.items():
+                    sub_v = df_vio[df_vio['severity'] == sev]['methb_level']
+                    if len(sub_v) > 0:
+                        fig_v.add_trace(go.Violin(
+                            y=sub_v, name=sev, line_color=col,
+                            fillcolor=col.replace('#', 'rgba(').rstrip(')') if False else col,
+                            opacity=0.7, box_visible=True, meanline_visible=True
+                        ))
+                fig_v.update_layout(**get_dark_layout())
+                fig_v.update_layout(
+                    title=dict(text="MetHb Distribution by Severity (Violin Plot)",
+                               font=dict(size=14, color=TEXT_PRIMARY), x=0.02),
+                    yaxis_title="MetHb Level (%)",
+                    showlegend=True,
+                )
+                st.plotly_chart(fig_v, use_container_width=True, config=get_plot_config())
+        except Exception:
+            _warn_card()
+
+
+# =============================================================================
 # MAIN APPLICATION FUNCTION
 # =============================================================================
 
 def main():
     """
     Main application entry point.
-    
+
     Orchestrates the entire dashboard including:
     - Session state initialization for navigation
     - Header contact buttons
     - Navigation radio controls
     - Page routing (Home, Severity Analysis, Trigger Analysis, Demographics, Treatment, Registry)
     - Sidebar filters
-    
+
     Note:
         Uses Streamlit session state for client-side navigation without page reloads.
         Each page is rendered conditionally based on st.session_state.page value.
@@ -1021,7 +1466,7 @@ def main():
     # Initialize Session State for Navigation
     if 'page' not in st.session_state:
         st.session_state.page = "Home"
-    
+
     # Helper to change page
     def set_page(page_name):
         st.session_state.page = page_name
@@ -1031,7 +1476,7 @@ def main():
     # Header Contact Buttons - Icon Only
     # ---------------------------------------------------------------------
     # Professional SVG icons for Email, LinkedIn, and GitHub (icon-only design)
-    # 
+    #
     # 📍 TO ADD YOUR CONTACT URLs - Replace the href="#" values below:
     #    Line ~920: Email button    → href="mailto:fabehazahid@gmail.com.com"
     #    Line ~928: LinkedIn button → href="https://linkedin.com/in/your-profile"
@@ -1057,12 +1502,12 @@ def main():
             </a>
         </div>
     """, unsafe_allow_html=True)
-    
+
     # =============================================================================
     # NAVIGATION & COMPONENT STYLING
     # =============================================================================
     # Additional CSS for radio-as-tabs navigation, buttons, alerts, and metrics
-    
+
     st.markdown(f"""
     <style>
         /* =====================================================================
@@ -1227,29 +1672,76 @@ def main():
     with st.sidebar:
         st.title("Filters")
         df = load_data()
-        
+
         filters = {}
         if not df.empty:
             all_triggers = sorted(df[df['trigger'] != 'Unknown']['trigger'].unique().tolist())
             filters['triggers'] = st.multiselect("Select Triggers", options=all_triggers)
-            
+
             age_min = int(df['age'].min()) if df['age'].notna().any() else 0
             age_max = int(df['age'].max()) if df['age'].notna().any() else 100
             filters['age_range'] = st.slider("Patient Age", age_min, age_max, (age_min, age_max))
-            
+
             min_quality = st.slider("Min Data Quality", 0, 100, 0)
             if min_quality > 0:
                 df = df[df['data_quality_score'] >= min_quality]
-        
+
+        # Audit Trail Toggle
+        st.markdown("---")
+        show_audit = st.checkbox("🔍 Show Audit Trail", value=False)
+        if show_audit:
+            with st.expander("Audit: Source Cases", expanded=True):
+                if not df.empty and 'methb_level' in df.columns:
+                    # Derive severity for audit
+                    df_audit = df.copy()
+                    df_audit['_severity'] = pd.cut(
+                        df_audit['methb_level'],
+                        bins=[-0.001, 14.999, 29.999, 200],
+                        labels=['Mild','Moderate','Severe']
+                    )
+                    audit_options = [
+                        "P(Severe | Dapsone)",
+                        "P(Severe | age > 40)",
+                        "P(Cyanosis | Severe)",
+                        "P(Recovery | Methylene Blue)"
+                    ]
+                    audit_sel = st.selectbox("Select probability to trace:", audit_options)
+                    if audit_sel == "P(Severe | Dapsone)":
+                        subset = df_audit[
+                            df_audit['trigger'].str.contains('Dapsone', case=False, na=False) &
+                            (df_audit['_severity'] == 'Severe')
+                        ][['pmid','methb_level','trigger','outcome']]
+                    elif audit_sel == "P(Severe | age > 40)":
+                        subset = df_audit[
+                            (df_audit['age'] > 40) &
+                            (df_audit['_severity'] == 'Severe')
+                        ][['pmid','methb_level','trigger','outcome']]
+                    elif audit_sel == "P(Cyanosis | Severe)":
+                        subset = df_audit[
+                            (df_audit['_severity'] == 'Severe') &
+                            df_audit['symptoms'].str.contains('Cyanosis', case=False, na=False)
+                        ][['pmid','methb_level','trigger','outcome']]
+                    else:
+                        subset = df_audit[
+                            df_audit['treatment'].str.contains('Methylene Blue', case=False, na=False) &
+                            (df_audit['outcome'] == 'Recovered')
+                        ][['pmid','methb_level','trigger','outcome']]
+                    if subset.empty:
+                        st.warning("No cases found for this numerator.")
+                    else:
+                        st.dataframe(subset.reset_index(drop=True), use_container_width=True, hide_index=True)
+                else:
+                    st.warning("No data available for audit.")
+
     # Main Navigation (State-Based)
-    pages = ["Home", "Severity Analysis", "Trigger Analysis", "Demographics", "Treatment", "Data Registry"]
-    
+    pages = ["Home", "Severity Analysis", "Trigger Analysis", "Demographics", "Treatment", "Data Registry", "Probability Analysis"]
+
     # We use a callback to sync the radio with the session state if it changes via radio interaction
     current_selection = st.radio(
-        "Navigation", 
-        pages, 
+        "Navigation",
+        pages,
         index=pages.index(st.session_state.page) if st.session_state.page in pages else 0,
-        horizontal=True, 
+        horizontal=True,
         label_visibility="collapsed",
         key="navigation_radio",
         on_change=lambda: set_page(st.session_state.navigation_radio) # Sync manual click
@@ -1274,7 +1766,7 @@ def main():
             <p class="hero-subtitle">Clinical Intelligence from Unstructured Literature</p>
         </div>
         """, unsafe_allow_html=True)
-        
+
         # The Problem We Solve
         col_prob_text, col_prob_metric = st.columns([3, 1])
         with col_prob_text:
@@ -1332,13 +1824,13 @@ def main():
         # NLP Insights (3 Columns)
         st.markdown("<h3 style='border-left:none; padding-left:0; background:none;'>Clinical NLP Insights</h3>", unsafe_allow_html=True)
         c1, c2, c3 = st.columns(3)
-        
+
         with c1:
-            st.info("**Trigger Severity**\n\nDapsone triggers **50% more severe** cases than Benzocaine (Avg 42% vs 28% MetHb).")
+            st.info("**Trigger Severity**\n\nDapsone triggers **32% higher** MetHb levels than Benzocaine (Avg 32.2% vs 24.4%), making it the more clinically severe pharmaceutical trigger.")
         with c2:
-            st.success("**Treatment Efficacy**\n\n**96% Recovery rate** with Methylene Blue, but identified a 94% reporting gap for G6PD status.")
+            st.success("**Treatment Efficacy**\n\n**47% confirmed recovery rate** with Methylene Blue among cases with known outcomes. 74% of cases had no G6PD status documented in the source literature.")
         with c3:
-            st.warning("**Demographic Peaks**\n\nIdentified **bimodal risk peaks** at ages 20-30 and 60-70, suggesting distinct etiology groups.")
+            st.warning("**Demographic Peaks**\n\nTwo age clusters identified: **10–20** and **50–60** years, suggesting distinct pediatric exposure and older medication-related etiology groups.")
 
         st.markdown("<br><br>", unsafe_allow_html=True)
 
@@ -1431,6 +1923,9 @@ def main():
     elif st.session_state.page == "Data Registry":
         st.subheader("Case Data Registry")
         st.dataframe(df, use_container_width=True)
+
+    elif st.session_state.page == "Probability Analysis":
+        render_probability_analysis(df)
 
 if __name__ == "__main__":
     main()
