@@ -20,7 +20,7 @@ Methemoglobinemia case reports exist as unstructured narrative text. MetaHB auto
 
 ## Pipeline
 
-![System Pipeline](image01.png)
+![System Pipeline](screenshots/image01.png)
 
 1. **Text preprocessing** — tokenization, normalization, section segmentation
 2. **NLP entity extraction** — spaCy + custom regex; extracts MetHb %, trigger, treatment, outcome, G6PD status, demographics
@@ -45,29 +45,29 @@ Methemoglobinemia case reports exist as unstructured narrative text. MetaHB auto
 ## Dashboard
 
 ### Home
-![Home](image12.png)
+![Home](screenshots/image12.png)
 
 ### Severity Analysis
-![Severity Distribution](image05.png)
+![Severity Distribution](screenshots/image05.png)
 
 ### Trigger Analysis
-![Trigger Analysis](image02.png)
+![Trigger Analysis](screenshots/image02.png)
 
 ### Demographics
-![Age vs Severity](image06.png)
-![Age Distribution](image13.png)
+![Age vs Severity](screenshots/image06.png)
+![Age Distribution](screenshots/image13.png)
 
 ### Treatment Outcomes
-![Treatment](image07.png)
+![Treatment](screenshots/image07.png)
 
 ### Probability Analysis
-![Conditional Probability](image03.png)
-![Joint Probability](image04.png)
-![Descriptive Statistics](image11.png)
-![Violin Plot](image15.png)
+![Conditional Probability](screenshots/image03.png)
+![Joint Probability](screenshots/image04.png)
+![Descriptive Statistics](screenshots/image11.png)
+![Violin Plot](screenshots/image15.png)
 
 ### Data Registry
-![Data Registry](image14.png)
+![Data Registry](screenshots/image14.png)
 
 ---
 
@@ -83,43 +83,13 @@ Methemoglobinemia case reports exist as unstructured narrative text. MetaHB auto
 
 ---
 
-## Installation
-
-```bash
-git clone https://github.com/fabehazahid/methemoglobinemia-nlp-analysis.git
-cd methemoglobinemia-nlp-analysis
-pip install -r requirements.txt
-python -m spacy download en_core_web_sm
-streamlit run dashboard.py
-```
-
-To run the full pipeline first:
-
-```bash
-python scripts/extract_text.py
-python scripts/nlp_extraction.py
-python scripts/eda_analysis.py
-streamlit run dashboard.py
-```
-
----
-
 ## Project Structure
 
 ```
 ├── dashboard.py
 ├── requirements.txt
-├── data/
-│   ├── PDFs and abstracts/
-│   └── processed/
-│       └── meth_structured_data.csv
 ├── scripts/
-│   ├── pubmed_scraper.py
-│   ├── extract_text.py
-│   ├── nlp_extraction.py
-│   └── eda_analysis.py
-└── outputs/
-    └── visualizations/
+└── screenshots/
 ```
 
 ---
