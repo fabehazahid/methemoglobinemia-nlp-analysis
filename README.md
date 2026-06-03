@@ -108,8 +108,8 @@ Methemoglobinemia case reports exist as unstructured narrative text. MetaHB auto
 ## Citation
 
 ```bibtex
-@software{metahb_2025,
-  author = {Fabeha Zahid Mahmood and Rawaha Ali and Ahsan Ali and Haseeb Ahmad Sardar and Soban Muhammad},
+@software{metahb,
+  author = {Fabeha Zahid Mahmood},
   title  = {MetaHB: NLP-Based Statistical Analysis of Methemoglobinemia Case Reports},
   year   = {2025},
   url    = {https://github.com/fabehazahid/methemoglobinemia-nlp-analysis}
